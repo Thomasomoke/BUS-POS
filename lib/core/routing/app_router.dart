@@ -3,6 +3,7 @@ import 'package:bus_pos/features/authentication/presentation/screens/login_scree
 import 'package:bus_pos/features/booking/presentation/screens/booking_screen.dart';
 import 'package:bus_pos/features/dashboard/presentation/screens/dashboard.dart';
 import 'package:bus_pos/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:bus_pos/features/authentication/presentation/screens/forgot_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -27,6 +28,14 @@ GoRouter createRouter() {
                 path: '/dashboard',
                 builder: (BuildContext context, GoRouterState state) =>
                     const DashboardScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/forgot-password',
+                builder: (context, state) => ForgotPasswordScreen(),
               ),
             ],
           ),
