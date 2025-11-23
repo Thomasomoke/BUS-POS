@@ -2,7 +2,7 @@ import 'package:bus_pos/common/widgets/app_button.dart';
 import 'package:bus_pos/common/widgets/page_layout.dart';
 import 'package:bus_pos/common/widgets/textfield_widget.dart';
 import 'package:bus_pos/features/authentication/providers/auth_provider.dart';
-import 'package:bus_pos/features/authentication/presentation/screens/forgot_password_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -84,12 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ForgotPasswordScreen(),
-                        ),
-                      ),
+                      onTap: () => context.push('/forgot-password'),
                       child: Text(
                         "Forgot Password?",
                         style: Theme.of(context).textTheme.headlineSmall,
