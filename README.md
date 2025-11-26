@@ -548,3 +548,8 @@ void main() {
 }
 ```
 
+# **Contributers**
+Thomas Omoke - [@Thomas Omoke](https://github.com/thomasomoke)
+Bezyl Morphat - [@Bezyl Morphat](https://github.com/Bezyl Morphat)
+Byrone Ouma - [@Byrone Ouma](https://github.com/Byrone Ouma)
+
