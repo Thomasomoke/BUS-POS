@@ -4,16 +4,17 @@ import 'package:bus_pos/features/booking/presentation/screens/booking_screen.dar
 import 'package:bus_pos/features/dashboard/presentation/screens/dashboard.dart';
 import 'package:bus_pos/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:bus_pos/features/authentication/presentation/screens/forgot_password_screen.dart';
+import 'package:bus_pos/features/payments/presentation/payment_confirmation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 GoRouter createRouter() {
   return GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/dashboard',
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
-        path: '/login',
+        path: '/dashboard',
         builder: (BuildContext context, GoRouterState state) =>
             const LoginScreen(),
       ),
@@ -44,6 +45,19 @@ GoRouter createRouter() {
               GoRoute(
                 path: '/bookings',
                 builder: (context, state) => BookingScreen(),
+              ),
+              GoRoute(
+                path: '/payment-confirmation',
+                builder: (context, state) {
+                  final paymentId =
+                      state.uri.queryParameters['paymentId'] ?? '';
+                  final transactionId =
+                      state.uri.queryParameters['transactionId'] ?? '';
+                  return PaymentConfirmationPage(
+                    paymentId: paymentId,
+                    initialTransactionId: transactionId,
+                  );
+                },
               ),
             ],
           ),
