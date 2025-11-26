@@ -10,11 +10,11 @@ import 'package:go_router/go_router.dart';
 
 GoRouter createRouter() {
   return GoRouter(
-    initialLocation: '/dashboard',
+    initialLocation: '/login',
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
-        path: '/dashboard',
+        path: '/login',
         builder: (BuildContext context, GoRouterState state) =>
             const LoginScreen(),
       ),
