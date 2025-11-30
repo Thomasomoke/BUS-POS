@@ -4,7 +4,7 @@ import 'package:bus_pos/features/booking/presentation/screens/booking_screen.dar
 import 'package:bus_pos/features/dashboard/presentation/screens/dashboard.dart';
 import 'package:bus_pos/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:bus_pos/features/authentication/presentation/screens/forgot_password_screen.dart';
-import 'package:bus_pos/features/payments/presentation/payment_confirmation_page.dart';
+import 'package:bus_pos/features/payments/presentation/screens/payment_confirmation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,16 +13,24 @@ GoRouter createRouter() {
     initialLocation: '/login',
     debugLogDiagnostics: true,
     routes: [
+      // Public routes (outside the main shell)
       GoRoute(
         path: '/login',
         builder: (BuildContext context, GoRouterState state) =>
             const LoginScreen(),
       ),
+      GoRoute(
+        path: '/forgot-password',
+        builder: (context, state) => ForgotPasswordScreen(),
+      ),
+
+      // Main app shell with bottom navigation
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return Dashboard(navigationShell: navigationShell);
         },
         branches: [
+          // Tab 1: Dashboard
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -32,14 +40,7 @@ GoRouter createRouter() {
               ),
             ],
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/forgot-password',
-                builder: (context, state) => ForgotPasswordScreen(),
-              ),
-            ],
-          ),
+          // Tab 2: Bookings & Payments
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -61,6 +62,7 @@ GoRouter createRouter() {
               ),
             ],
           ),
+          // Tab 3: Reports
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -69,6 +71,7 @@ GoRouter createRouter() {
               ),
             ],
           ),
+          // Tab 4: Profile
           StatefulShellBranch(
             routes: [
               GoRoute(
